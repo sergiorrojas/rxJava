@@ -1,4 +1,4 @@
-# Introduction
+# Introducción
 
 La programación reactiva es un paradigma de programación **declarativo** que utiliza flujos o **streams** de datos y la propagación de cambios para
 crear aplicaciones **asincronas**, no bloqueantes y dirigidas por **eventos** que puedan ser escaladas fácilmente.
