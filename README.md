@@ -1,4 +1,4 @@
-# rxJava
+# Introduction
 
 La programación reactiva es un paradigma de programación **declarativo** que utiliza flujos o **streams** de datos y la propagación de cambios para
 crear aplicaciones **asincronas**, no bloqueantes y dirigidas por **eventos** que puedan ser escaladas fácilmente.
@@ -47,15 +47,45 @@ La programacion imperativa describe los calculos en forma de sentencias que camb
 Como ejemplo si quisieramos hacer una funcion que regresa el doble de los numeros pares en una lista en un lenguaje que soporta ambos paradigmas como python escribiriamos algo como:
 
 #Imperativo
-> dobles = [n for n in numeros if n%2 == 0]
+> dobles = [n * 2 for n in numeros if n%2 == 0]
 
 #Declarativo
 ```
 dobles = []
 for i in range(20):
   if i % 2 == 0:
-    dobles.append(i)
+    dobles.append(i * 2)
 ```
-    
+
+El mismo ejemplo en java seria:
+
+#Imperativo
+```
+    List<Integer> calcularDobleParesImperativo(List<Integer> numeros){
+        ArrayList<Integer> dobles = new ArrayList<>();
+        for (Integer numero: numeros){
+            if(numero % 2 == 0){
+                dobles.add(numero * 2);
+            }
+        }
+        return dobles;
+    }
+```
+
+#Declarativo
+```
+  List<Integer> calcularDobleParesDeclarativo(List<Integer> numeros){
+        return numeros.stream()
+                .filter(numero -> numero % 2 == 0)
+                .map(numero -> numero * 2)
+                .collect(Collectors.toList());
+```
+
 
 ## El Manifiesto Reactivo
+El Manifiesto reactivo es un documento que se puede encontrar en el siguiente link: https://www.reactivemanifesto.org/ y detalla los principios basicos de la programacion reactiva. Fue liberado por primera vez en el 2013 por un grupo de desarrolladores liderados por Jonas Boner.
+
+Este documento explica como al tener un sistema **dirigido por mensajes** permite a sus componentes tener un bajo acoplamiento. A su vez, los sistemas dirigidos por mensajes facilitan la **elasticidad** para incrementar o disminuir la utilizacion de recursos automaticamente segun la demanda lo requiera. Estas dos ultimas propiedades proveen a un sistema de **resilencia**, la cual le permite continuar siendo **responsivo** a pesar de fallas en varios componentes. Esta ultima cualidad es la meta principal de la programacion reactiva; el poder proporcionar la mejor experiencia, lo mas responsiva posible a los usuarios del sistema.
+
+
+
